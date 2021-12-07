@@ -12,10 +12,8 @@ const payment = (req, res) => {
     },
     (err, success) => {
       if (err) {
-        console.log(err);
         res.status(500).json(err);
       } else {
-        console.log(err);
         res.status(200).json(success);
       }
     }
