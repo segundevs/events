@@ -4,6 +4,7 @@
 .header {
   position: fixed;
   background-color: $white;
+
   z-index: 999;
   top: 0;
   left: 0;
@@ -41,7 +42,8 @@
 }
 
 .nav__link {
-  color: $text-secondary;
+  color: $primary-color;
+
   padding: 8px 15px;
 
   &:hover {
@@ -74,8 +76,13 @@
 
 .menu__icon {
   cursor: pointer;
+  color: $primary-color;
 
   @include md {
     display: none;
+  }
+
+  .toggleIcon {
+    font-size: 18px;
   }
 }

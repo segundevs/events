@@ -14,7 +14,7 @@ const Header = () => {
   return (
    <header className="header">
       <nav className="navbar">
-       <Link to="/" className="nav__brand">
+       <Link to="/" className="nav__brand" onClick={() => setIsOpen(false)}>
         <h3>Events</h3>
        </Link>
         
