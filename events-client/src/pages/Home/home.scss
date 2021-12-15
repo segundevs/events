@@ -1,0 +1,24 @@
+@import "../../styles/breakpoints";
+@import "../../styles/variables";
+
+.event_container {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px;
+
+  @include md {
+    width: 60%;
+  }
+
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+  }
+
+  @include xl {
+    grid-template-columns: repeat(3, 1fr);
+    width: 80%;
+  }
+}
