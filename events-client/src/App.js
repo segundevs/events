@@ -3,15 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 //Components
-import Header from "./components/Header/Header";
-import Home from "./pages/Home/Home";
-import Details from "./pages/Details/Details";
-import Ticket from "./pages/Ticket/Ticket";
-import Checkout from "./pages/Checkout/Checkout";
-import Contact from "./pages/Contact/Contact";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Details from "./pages/Details";
+import Ticket from "./pages/Ticket";
+import Contact from "./pages/Contact";
 
 function App() {
   const [events, setEvents] = useState([]);
+  const [details, setDetails] = useState([]);
+  const [link, setLink] = useState("");
 
   const client = createClient({
     space: process.env.REACT_APP_SPACE_ID,
@@ -34,14 +35,11 @@ function App() {
           <Route path="/" exact>
             <Home events={events} />
           </Route>
-          <Route path="/details/:slug" client={client}>
-            <Details />
-          </Route>
-          <Route path="/checkout">
-            <Checkout />
+          <Route path="/details/:slug">
+            <Details setDetails={setDetails} setLink={setLink} />
           </Route>
           <Route path="/ticket">
-            <Ticket />
+            <Ticket link={link} details={details} />
           </Route>
           <Route path="/contact">
             <Contact />

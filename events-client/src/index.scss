@@ -1,9 +1,14 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import "./styles/utils/variables";
+@import "./styles/base/reset";
 
-.app__container {
-  margin-top: 80px;
-}
+@import "./styles/utils/breakpoints";
+
+//Components
+@import "./styles/components/header";
+@import "./styles/components/card";
+
+//Pages
+@import "./styles/pages/home";
+@import "./styles/pages/contact";
+@import "./styles/pages/details";
+@import "./styles/pages/ticket";

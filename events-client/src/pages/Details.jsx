@@ -5,7 +5,6 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import StripeCheckout from 'react-stripe-checkout';
 import { useParams, useHistory } from 'react-router-dom';
 import {MdOutlineArrowBack} from 'react-icons/md';
-import './details.scss';
 
 const Details = ({ setDetails, setLink }) => {
   const { slug } = useParams();
