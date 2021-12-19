@@ -13,6 +13,8 @@ function App() {
   const [events, setEvents] = useState([]);
   const [details, setDetails] = useState([]);
   const [link, setLink] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState("");
 
   const client = createClient({
     space: process.env.REACT_APP_SPACE_ID,
@@ -21,10 +23,21 @@ function App() {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await client.getEntries({ content_type: "event" });
-      setEvents(res.items);
+      setLoading(true);
+      try {
+        const res = await client.getEntries({ content_type: "event" });
+        setEvents(res.items);
+        setLoading(false);
+      } catch (error) {
+        setErr(error.message);
+        setLoading(false);
+      }
     };
     getData();
+  }, []);
+
+  useEffect(() => {
+    return () => setDetails([]);
   }, []);
 
   return (
@@ -33,7 +46,7 @@ function App() {
       <div className="app__container">
         <Switch>
           <Route path="/" exact>
-            <Home events={events} />
+            <Home events={events} loading={loading} err={err} />
           </Route>
           <Route path="/details/:slug">
             <Details setDetails={setDetails} setLink={setLink} />

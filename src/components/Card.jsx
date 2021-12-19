@@ -9,7 +9,7 @@ const Card = ({event}) => {
   return (
     <div className="card_container">
       <div className="img_container">
-        <img src={event.fields.thumbnail.fields.file.url} alt={event.fields.title} className="event-img"/>
+        <img src={event.fields.thumbnail.fields.file.url} alt={event.fields.title} className="event-img" loading='lazy'/>
       </div>
       
         <h4 className={event.fields.location === 'Online' ? 'online-date date' : 'offline-date date'}>{date}</h4>

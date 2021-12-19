@@ -12,13 +12,13 @@ const Ticket = ({ link, details }) => {
   const handleClick = async () => {
     setLoading(true)
     try {
-       await axios.post('http://localhost:5000/api/create-pdf', {
+       await axios.post(`${process.env.REACT_APP_API_URL}/api/create-pdf`, {
       email: details.billing_details.name,
       amount: details.amount.toLocaleString(),
       status: details.outcome.seller_message,
       type: details.payment_method_details.type
     });
-    const pdf = await axios.get('http://localhost:5000/api/get-pdf', { responseType: 'blob' });
+    const pdf = await axios.get(`${process.env.REACT_APP_API_URL}/api/get-pdf`, { responseType: 'blob' });
     const pdfBlob = new Blob([pdf.data], { type: 'application/pdf' })
 
     saveAs(pdfBlob, 'receipt.pdf')

@@ -5,6 +5,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import StripeCheckout from 'react-stripe-checkout';
 import { useParams, useHistory } from 'react-router-dom';
 import {MdOutlineArrowBack} from 'react-icons/md';
+import Skeleton from '../components/Skeleton';
 
 const Details = ({ setDetails, setLink }) => {
   const { slug } = useParams();
@@ -14,6 +15,8 @@ const Details = ({ setDetails, setLink }) => {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(false)
   const [err, setErr] = useState('');
+  const [contentLoading, setContentLoading] = useState(false);
+  const [contentErr, setContentErr] = useState('');
 
     const client = createClient({
     space: process.env.REACT_APP_SPACE_ID,
@@ -22,11 +25,14 @@ const Details = ({ setDetails, setLink }) => {
 
   useEffect(() => {
     const getSingleEvent = async () => {
+      setContentLoading(true)
       try {
         const res = await client.getEntries({'fields.slug': slug, content_type: 'event'});
         setSingleEvent(res.items[0].fields);
+        setContentLoading(false)
       } catch (error) {
-        console.log(error);
+        setContentErr(error.message);
+        setContentLoading(false)
       }
       
     }
@@ -43,7 +49,7 @@ const Details = ({ setDetails, setLink }) => {
       const makePayment = async () => {
         setLoading(true)
         try {
-          const res = await axios.post('http://localhost:5000/api/payment', {
+          const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/payment`, {
           tokenId: token.id,
           amount: `${amount}00`, 
         })
@@ -67,8 +73,9 @@ const Details = ({ setDetails, setLink }) => {
 
   return (
     <React.Fragment>
-      {err && <p style={{textAlign: 'center'}}>{err}</p>}
-      {singleEvent && (
+      {contentErr && <p style={{textAlign: 'center'}}>{contentErr}</p>}
+      {contentLoading && <Skeleton />}
+      {featuredImage && title && type && description && categoryAndPrice && speakersperformers && (
         <div className="details_container">
           <button onClick={() => history.push('/')} className="back-btn"><MdOutlineArrowBack className="icon"/>  Go back</button>
           <img src={featuredImage && featuredImage.fields.file.url} alt={title} loading='lazy'/>
@@ -83,12 +90,13 @@ const Details = ({ setDetails, setLink }) => {
             <span>Tickets</span>
 
              <select value={amount} onChange={(e) => setAmount(e.target.value)}>
-               {(categoryAndPrice && categoryAndPrice.includes('Free')) ? <option value='free'>Free</option> : <option value="price">Price</option>}
+               {(categoryAndPrice && categoryAndPrice.includes('Free')) ? <option value='free'>Free</option> : <option value={0}>Price</option>}
            
             {categoryAndPrice && categoryAndPrice.map((cat => (
               <option value={cat.split(' ')[1]} key={cat}>{cat}</option>
             )))}   
           </select>
+          {amount <= 0 && <span style={{marginTop: '10px'}}>Please enter a valid amount</span>}
           </div> 
 
           {categoryAndPrice && categoryAndPrice.includes('Free') ? (<button onClick={() => window.location.replace(link)} target="_blank" className='ticket_btn'>Join</button>) : 
@@ -102,7 +110,8 @@ const Details = ({ setDetails, setLink }) => {
           stripeKey={process.env.REACT_APP_STRIPE_CLIENT_KEY}
           className="stripe_checkout"
           >
-            {loading? <p>Loading...</p> : <button className='ticket_btn'>Buy ticket</button>}
+            {err && <p>{err}</p>}
+            {loading? <p>Loading...</p> : (amount <= 0 ? <button className='ticket_btn' disabled>Buy ticket</button> : <button className='ticket_btn'>Buy ticket</button>)}
           </StripeCheckout>)
           }
   
