@@ -1,0 +1,31 @@
+.ticket_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vh;
+
+  & > * {
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .ticket_btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: $text-color;
+    color: $btn-bg;
+    font-weight: 800;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #0d035f;
+    }
+  }
+}

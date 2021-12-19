@@ -2,21 +2,34 @@
   width: 80%;
   margin: 0 auto;
 
+  & > * {
+    margin-bottom: 5px;
+  }
+
+  h4 > span {
+    font-weight: 500;
+    font-size: 12px;
+    margin-left: 5px;
+  }
+
+  .description {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
   .back-btn {
+    cursor: pointer;
     display: flex;
     align-self: center;
     border: none;
     outline: none;
-    width: 100px;
+    width: fit-content;
     margin-bottom: 10px;
+    padding: 5px 8px;
     font-size: 14px;
-    background-color: #fff;
-    color: $bg-color;
+    background-color: rgba(255, 192, 203, 0.4);
+    color: $text-color;
     text-align: left;
-
-    @include md {
-      font-size: 16px;
-    }
   }
 
   img {
@@ -25,7 +38,80 @@
     object-fit: cover;
   }
 
+  h3 {
+    background-color: $pink;
+    padding: 3px 10px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transform: rotateZ(-4deg);
+    width: fit-content;
+    margin-bottom: 15px;
+  }
+
+  ul {
+    margin-bottom: 20px;
+  }
+
+  .speakers {
+    font-weight: 400;
+    list-style: none;
+    margin-bottom: 10px;
+  }
+
+  .speakers::before {
+    content: "\1F3A4";
+    margin-right: 3px;
+  }
+
+  .tickets_prices {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    select {
+      width: 50%;
+      background-color: $card-bg;
+      color: $text-color;
+      margin-right: 20px;
+      border: none;
+      outline: none;
+      padding: 10px;
+    }
+  }
+
+  .ticket_btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 20px;
+    background-color: $text-color;
+    color: $btn-bg;
+    font-weight: 800;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #0d035f;
+    }
+  }
+
   @include md {
     width: 60%;
+
+    .back-btn {
+      font-size: 16px;
+    }
+  }
+
+  @include lg {
+    width: 40%;
   }
 }
