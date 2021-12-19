@@ -5,7 +5,8 @@
   height: 80px;
   width: 100%;
   z-index: 1;
-  background-color: $bg-color;
+  background-color: $background-color;
+  color: $text-color;
   font-weight: 400;
 }
 
@@ -17,13 +18,20 @@
   justify-content: space-between;
   align-items: center;
 
+  .nav_brand {
+    background-color: $text-color;
+    color: $btn-bg;
+    padding: 5px 10px;
+    transform: rotateZ(-4deg);
+  }
+
   @include lg {
     width: 80%;
   }
 }
 
 .nav_items {
-  background-color: $bg-color;
+  background-color: $background-color;
   position: fixed;
   top: 80px;
   right: -100%;
@@ -66,7 +74,7 @@
   display: flex;
   cursor: pointer;
   padding: 0 1rem;
-  color: $white;
+  color: $text-color;
 
   @include md {
     display: none;

@@ -11,8 +11,8 @@ const Header = () => {
   return (
     <header className='header'>
       <nav className="navbar">
-        <Link to="/" className="nav_brand" >
-          <h3>Events</h3>
+        <Link to="/" >
+          <h3 className="nav_brand">Events</h3>
         </Link>
   
         <div className="mobile_menu-icon" onClick={handleClick}>

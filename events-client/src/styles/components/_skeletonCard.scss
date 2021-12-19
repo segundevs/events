@@ -1,0 +1,56 @@
+.sk_card-container {
+  background-color: rgb(143, 140, 140);
+  width: 330px;
+  height: 410px;
+  position: relative;
+  animation: skeletonLoading 1.8s linear infinite;
+
+  .sk_card-img-container {
+    background-color: rgb(143, 140, 140);
+    width: 100%;
+    height: 300px;
+    padding: 20px 20px 0 20px;
+  }
+
+  .sk_card-img {
+    background-color: rgb(143, 140, 140);
+    width: 100%;
+    height: 280px;
+  }
+
+  .sk_card-date {
+    position: absolute;
+    background-color: rgb(143, 140, 140);
+    width: 120px;
+    height: 38px;
+    top: 20px;
+    left: -20px;
+    transform: rotateZ(-45deg);
+  }
+
+  .sk_card-details {
+    background-color: rgb(143, 140, 140);
+    width: 100%;
+    height: 120px;
+    transform: rotateZ(-4deg);
+    margin-top: -12px;
+  }
+}
+
+@keyframes skeletonLoading {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
