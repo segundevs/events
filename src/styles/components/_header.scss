@@ -66,25 +66,10 @@
   }
 }
 
-.link.hover-state {
-  color: $hover-color;
-}
-
 .mobile_menu-icon {
-  display: flex;
   cursor: pointer;
   padding: 0 1rem;
   color: $text-color;
-
-  @include md {
-    display: none;
-  }
-}
-
-.nav_social {
-  display: flex;
-  flex-direction: column;
-  margin-top: 100px;
 
   @include md {
     display: none;

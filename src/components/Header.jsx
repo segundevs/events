@@ -21,7 +21,7 @@ const Header = () => {
         
         <ul className={clicked ? "nav_items active" : "nav_items"}>
           <Link to="/" className="link" onClick={handleClick}>Home</Link>
-          <Link to="/contact" className="link" onClick={handleClick}>Contact</Link>
+          <Link to="/about" className="link" onClick={handleClick}>About</Link>
         </ul>
       </nav>
     </header>

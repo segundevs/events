@@ -32,7 +32,7 @@ const Ticket = ({ link, details }) => {
 
   return (
     <div className='ticket_container'>
-      {err && <p>{err}</p>}
+      {err && <p style={{textAlign: 'center'}}>{err}</p>}
       <h3 className='ticket_heading'>Download your ticket and bring it with you to the venue</h3>
       {link && <button onClick={() => window.location.replace(link)} target="_blank" className='ticket_btn'>Join</button>}
       <button onClick={handleClick} className='ticket_btn'>{ loading ? 'Downloading...' : 'Download receipt'}</button>

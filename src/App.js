@@ -7,7 +7,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
 import Ticket from "./pages/Ticket";
-import Contact from "./pages/Contact";
+import About from "./pages/About";
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -54,8 +54,8 @@ function App() {
           <Route path="/ticket">
             <Ticket link={link} details={details} />
           </Route>
-          <Route path="/contact">
-            <Contact />
+          <Route path="/about">
+            <About />
           </Route>
         </Switch>
       </div>

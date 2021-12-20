@@ -1,0 +1,16 @@
+.about_container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 28px;
+
+  .card_details {
+    list-style: none;
+    margin-top: 20px;
+
+    li::before {
+      content: "\1F4B3";
+      margin-right: 10px;
+    }
+  }
+}

@@ -110,8 +110,8 @@ const Details = ({ setDetails, setLink }) => {
           stripeKey={process.env.REACT_APP_STRIPE_CLIENT_KEY}
           className="stripe_checkout"
           >
-            {err && <p>{err}</p>}
-            {loading? <p>Loading...</p> : (amount <= 0 ? <button className='ticket_btn' disabled>Buy ticket</button> : <button className='ticket_btn'>Buy ticket</button>)}
+            {err && <p style={{textAlign: 'center'}}>{err}</p>}
+            {amount <= 0 ? (<button className='ticket_btn' disabled>Buy ticket</button>) : (<button className='ticket_btn'>{loading ? 'Processing' : 'Buy ticket'}</button>)}
           </StripeCheckout>)
           }
   
