@@ -26,6 +26,7 @@ function App() {
       setLoading(true);
       try {
         const res = await client.getEntries({ content_type: "event" });
+        console.log(res.items);
         setEvents(res.items);
         setLoading(false);
       } catch (error) {
@@ -34,10 +35,6 @@ function App() {
       }
     };
     getData();
-  }, []);
-
-  useEffect(() => {
-    return () => setDetails([]);
   }, []);
 
   return (

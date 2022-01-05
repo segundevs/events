@@ -26,14 +26,14 @@
     height: 120px;
     position: relative;
     transform: rotateZ(-4deg);
-    transition: transform 0.2s ease-in;
+    // transition: transform 0.2s ease-in;
 
-    &:hover {
-      animation-name: bounce;
-      animation-timing-function: linear;
-      animation-duration: 1.8s;
-      animation-iteration-count: 1;
-    }
+    // &:hover {
+    //   animation-name: bounce;
+    //   animation-timing-function: linear;
+    //   animation-duration: 1.8s;
+    //   animation-iteration-count: 1;
+    // }
 
     .btn {
       background-color: $text-color;
@@ -75,20 +75,20 @@
   }
 }
 
-@keyframes bounce {
-  0% {
-    transform: rotateZ(-4deg);
-  }
-  25% {
-    transform: rotateZ(0deg);
-  }
-  50% {
-    transform: rotateZ(4deg);
-  }
-  75% {
-    transform: rotateZ(0deg);
-  }
-  100% {
-    transform: rotateZ(-4deg);
-  }
-}
+// @keyframes bounce {
+//   0% {
+//     transform: rotateZ(-4deg);
+//   }
+//   25% {
+//     transform: rotateZ(0deg);
+//   }
+//   50% {
+//     transform: rotateZ(4deg);
+//   }
+//   75% {
+//     transform: rotateZ(0deg);
+//   }
+//   100% {
+//     transform: rotateZ(-4deg);
+//   }
+// }
